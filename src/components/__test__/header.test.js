@@ -4,40 +4,29 @@ import React from 'react';
 import { render, screen } from '@testing-library/react';
 import Header from '../header';
 
-describe('Header Component', () => {
-  test('renders the logo', () => {
+// Test suite for Header component
+describe('Header', () => {
+  test('renders the logo with the correct text', () => {
     render(<Header />);
-    const logoElement = screen.getByText(/Website Logo/i);
+    const logoElement = screen.getByText(/Sketch&Sold/i);
     expect(logoElement).toBeInTheDocument();
   });
 
-  test('renders navigation links', () => {
+  test('renders the login and signup links', () => {
     render(<Header />);
-    
-    const homeLink = screen.getByText(/Home/i);
-    const aboutLink = screen.getByText(/About/i);
-    const servicesLink = screen.getByText(/Services/i);
-    const contactLink = screen.getByText(/Contact/i);
-    
-    expect(homeLink).toBeInTheDocument();
-    expect(aboutLink).toBeInTheDocument();
-    expect(servicesLink).toBeInTheDocument();
-    expect(contactLink).toBeInTheDocument();
+    const loginLink = screen.getByText(/Login/i);
+    const signupLink = screen.getByText(/Sign Up/i);
+
+    expect(loginLink).toBeInTheDocument();
+    expect(loginLink).toHaveAttribute('href', '#login');
+    expect(signupLink).toBeInTheDocument();
+    expect(signupLink).toHaveAttribute('href', '#signup');
   });
 
-  test('has correct links', () => {
+  test('renders the correct tagline', () => {
     render(<Header />);
-    
-    const homeLink = screen.getByText(/Home/i);
-    expect(homeLink.closest('a')).toHaveAttribute('href', '#home');
-
-    const aboutLink = screen.getByText(/About/i);
-    expect(aboutLink.closest('a')).toHaveAttribute('href', '#about');
-
-    const servicesLink = screen.getByText(/Services/i);
-    expect(servicesLink.closest('a')).toHaveAttribute('href', '#services');
-
-    const contactLink = screen.getByText(/Contact/i);
-    expect(contactLink.closest('a')).toHaveAttribute('href', '#contact');
+    const taglineElement = screen.getByText(/Create, sell and discover!/i);
+    expect(taglineElement).toBeInTheDocument();
   });
 });
+

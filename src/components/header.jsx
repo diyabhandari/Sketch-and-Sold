@@ -5,16 +5,14 @@ const Header = () => {
   return (
     <header className="header">
       <div className="logo">
-        <h1>Website Logo</h1>
+        <h1>Sketch&Sold</h1>
       </div>
-      <nav>
-        <ul className="nav-links">
-          <li><a href="#home">Home</a></li>
-          <li><a href="#about">About</a></li>
-          <li><a href="#services">Services</a></li>
-          <li><a href="#contact">Contact</a></li>
-        </ul>
-      </nav>
+      <div className="right-section">
+        <div>
+          <a href="#login">Login</a> | <a href="#signup">Sign Up</a>
+        </div>
+        <p className="tagline">Create, sell and discover!</p>
+      </div>
     </header>
   );
 };

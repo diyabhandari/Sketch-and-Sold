@@ -1,6 +1,7 @@
 import React, {useState, useEffect, useLayoutEffect} from "react";
 import {supabase} from "./createClient"
 import Header from './components/header.jsx'
+import Footer from './components/footer.jsx'
 import { flushSync } from "react-dom";
 const App = () => {
   const [items,setItems]=useState([])
@@ -19,6 +20,7 @@ const App = () => {
   return(
     <>
       <Header />
+      <Footer />
       <div>App</div>
     </> 
   );
