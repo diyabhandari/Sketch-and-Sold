@@ -13,7 +13,7 @@ describe('Footer', () => {
   test('renders the GitHub link with correct href', () => {
     render(<Footer />);
     const githubLink = screen.getByRole('link');
-    expect(githubLink).toHaveAttribute('href', 'https://github.com/ishita-sawhney/Sketch-and-Sold');
+    expect(githubLink).toHaveAttribute('href', 'https://github.com/diyabhandari/Sketch-and-Sold');
   });
 
   test('renders the GitHub image with correct alt text', () => {
