@@ -1,5 +1,6 @@
 import React, {useState, useEffect, useLayoutEffect} from "react";
 import {supabase} from "./createClient"
+import Login from './components/login.jsx';
 import { flushSync } from "react-dom";
 const App = () => {
   const [items,setItems]=useState([])
@@ -16,7 +17,10 @@ const App = () => {
       
   } //only for testing supabase
   return(
-    <div>App</div>
+    <>
+      <Login />
+      <div>App</div>
+    </>
   )
 }
 export default App
