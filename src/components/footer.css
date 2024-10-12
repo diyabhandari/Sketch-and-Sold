@@ -1,0 +1,27 @@
+.footer {
+    padding: 20px;
+    background-color: #000000;
+    color: #fff;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+  }
+  
+  .footer-content {
+    display: flex;
+    justify-content: space-between; 
+    align-items: center; 
+  }
+  
+  .author {
+    margin-left: 20px;
+  }
+  
+  .github-logo {
+    width: 24px;
+    margin-right: 50px; 
+  }
+  
+  .github-logo {
+    visibility: visible;
+  }
