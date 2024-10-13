@@ -1,0 +1,60 @@
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f0f0f0; 
+  margin: 0;
+  padding: 0;
+  justify-content: center; /* Center horizontally */
+  align-items: center;
+}
+
+.login-container {
+  width: 300px; 
+  padding: 20px;
+  background-color: #ffffff; 
+  border-radius: 8px; /* Rounded corners */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+}
+
+h2 {
+  text-align: center; /* Center the heading */
+  color: #333; 
+}
+
+.form-group {
+  margin-bottom: 15px; /* Space between input fields */
+}
+
+label {
+  display: block; /* Make labels block elements */
+  margin-bottom: 5px; /* Space between label and input */
+  color: #555; 
+}
+
+input {
+  width: 90%; 
+  padding: 10px; /* Padding inside input fields */
+  border: 1px solid #ccc; 
+  border-radius: 4px; /* Slightly rounded corners */
+}
+
+input:focus {
+  border-color: #007bff; /* Change border color on focus */
+  outline: none; /* Remove default outline */
+}
+
+.login-button {
+  margin-top: 15px;
+  width: 100%; /* Full width for button */
+  padding: 10px; /* Padding inside button */
+  background-color: #007bff; /* Bootstrap blue color */
+  color: white; 
+  border: none; /* Remove border */
+  border-radius: 4px; /* Slightly rounded corners */
+  cursor: pointer; /* Pointer cursor on hover */
+}
+
+.login-button:hover {
+  background-color: #0056b3; 
+}
+
