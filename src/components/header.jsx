@@ -9,10 +9,10 @@ const Header = () => {
       </div>
       <div className="right-section">
         <div>
-          <div>
-            <div>Login</div>
-            <div> | </div>
-            <div>Signup</div>
+          <div className='container'> 
+            <div className = 'loginLink'>Login</div>
+            <div className='separator'> | </div>
+            <div className = 'loginLink'>Signup</div>
           </div>
         </div>
         <p className="tagline">Create, sell and discover!</p>
