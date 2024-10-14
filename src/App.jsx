@@ -1,10 +1,11 @@
 //equivalent to app.js of tutorial, import the dashboard here
 
 import React, {useState, useEffect, useLayoutEffect} from "react";
+import { Routes, Route } from 'react-router-dom';
 import {supabase} from "./createClient"
 import Header from './components/header.jsx'
 import Footer from './components/footer.jsx'
-import Login from './components/login.jsx'
+import LoginPage from './pages/loginPage.jsx'
 import Signup from './components/signup.jsx'
 import { flushSync } from "react-dom";
 const App = () => {
@@ -30,7 +31,9 @@ const App = () => {
   return(
     <>
       <Header />
-      <Login />
+      <Routes>
+        <Route path="/login" element={<LoginPage />} />
+      </Routes>
       <Footer />
       <div>App</div>
     </> 
