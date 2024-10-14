@@ -4,8 +4,7 @@ import React, {useState, useEffect, useLayoutEffect} from "react";
 import {supabase} from "./createClient"
 import Header from './components/header.jsx'
 import Footer from './components/footer.jsx'
-import Auth from './auth.jsx'
-import Login from './components/login.jsx'
+import Signup from './components/signup.jsx'
 import { flushSync } from "react-dom";
 const App = () => {
   const [items,setItems]=useState([])
@@ -14,6 +13,12 @@ const App = () => {
     fetchItems();
 
   }, [])
+
+  const [showLogin, setShowLogin] = useState(false);
+  const handleLoginClick = () => {
+    setShowLogin(true);
+  }
+
   async function fetchItems(){
     const {data} = await supabase
       .from('Items') //access the data in items table, notice it is written just like SQL
@@ -23,9 +28,11 @@ const App = () => {
   } //only for testing supabase
   return(
     <>
-      <Login />
-      <Header />
+      <Header onLoginClick={handleLoginClick} />
+      {showLogin && <Login />}
+
       <Footer />
+      <Signup />
       <div>App</div>
     </> 
   );

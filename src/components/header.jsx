@@ -9,7 +9,7 @@ const Header = () => {
       </div>
       <div className="right-section">
         <div>
-          <a href="#login">Login</a> | <a href="#signup">Sign Up</a>
+          <a href="#" onClick={onLoginClick}>Login</a> | <a href="#signup">Sign Up</a>
         </div>
         <p className="tagline">Create, sell and discover!</p>
       </div>
