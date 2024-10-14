@@ -1,10 +1,12 @@
 //equivalent to app.js of tutorial, import the dashboard here
 
 import React, {useState, useEffect, useLayoutEffect} from "react";
+import { Routes, Route } from 'react-router-dom';
 import {supabase} from "./createClient"
 import Header from './components/header.jsx'
 import Footer from './components/footer.jsx'
-import Signup from './components/signup.jsx'
+import LoginPage from './pages/loginPage.jsx'
+import SignupPage from "./pages/signupPage.jsx";
 import { flushSync } from "react-dom";
 const App = () => {
   const [items,setItems]=useState([])
@@ -28,11 +30,12 @@ const App = () => {
   } //only for testing supabase
   return(
     <>
-      <Header onLoginClick={handleLoginClick} />
-      {showLogin && <Login />}
-
+      <Header />
+      <Routes>
+        <Route path="/login" element={<LoginPage />} />
+        <Route path="/signup" element={<SignupPage />} />
+      </Routes>
       <Footer />
-      <Signup />
       <div>App</div>
     </> 
   );
