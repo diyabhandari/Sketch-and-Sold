@@ -5,14 +5,14 @@ const Signup = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState(''); // New state for confirm password
-  const [userType, setUserType] = useState('artist'); // State for user type
+  //const [userType, setUserType] = useState('artist'); // State for user type
 
   const handleSubmit = (e) => {
     e.preventDefault();
     // Handle signup logic here
     console.log('Username:', username);
     console.log('Password:', password);
-    console.log('User Type:', userType); // Log user type
+    //console.log('User Type:', userType); // Log user type
     // Reset the form
     setUsername('');
     setPassword('');
@@ -56,7 +56,7 @@ const Signup = () => {
         />
         </div>
 
-        <div className="form-group">
+        {/*<div className="form-group">
           <label htmlFor="user-type">I am a:</label>
           <select
             id="user-type"
@@ -67,8 +67,8 @@ const Signup = () => {
             <option value="artist">Artist</option>
             <option value="buyer">Buyer</option>
           </select>
-        </div>
-        <button type="submit" className="signup-button">Signup</button>
+        </div>*/}
+        <button type="submit" className="signup-button">Sign Up</button>
       </form>
     </div>
   );
