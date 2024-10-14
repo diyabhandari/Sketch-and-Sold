@@ -1,3 +1,5 @@
+//equivalent to app.js of tutorial, import the dashboard here
+
 import React, {useState, useEffect, useLayoutEffect} from "react";
 import {supabase} from "./createClient"
 import Header from './components/header.jsx'
