@@ -4,6 +4,7 @@ import React, {useState, useEffect, useLayoutEffect} from "react";
 import {supabase} from "./createClient"
 import Header from './components/header.jsx'
 import Footer from './components/footer.jsx'
+import Login from './components/login.jsx'
 import Signup from './components/signup.jsx'
 import { flushSync } from "react-dom";
 const App = () => {
@@ -28,11 +29,9 @@ const App = () => {
   } //only for testing supabase
   return(
     <>
-      <Header onLoginClick={handleLoginClick} />
-      {showLogin && <Login />}
-
+      <Header />
+      <Login />
       <Footer />
-      <Signup />
       <div>App</div>
     </> 
   );
