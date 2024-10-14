@@ -1,12 +1,14 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import LoginPage from '../pages/loginPage';
 import './Header.css';
 
 const Header = () => {
   const navigate = useNavigate();
   const clickLoginLink = () => {
     navigate('/login');
+  }
+  const clickSignUpLink = () => {
+    navigate('/signup');
   }
   return (
     <header className="header">
@@ -18,7 +20,7 @@ const Header = () => {
           <div className='container'> 
             <div className = 'loginLink' onClick={clickLoginLink}>Login</div>
             <div className='separator'> | </div>
-            <div className = 'loginLink'>Signup</div>
+            <div className = 'loginLink' onClick={clickSignUpLink}>Signup</div>
           </div>
         </div>
         <p className="tagline">Create, sell and discover!</p>
