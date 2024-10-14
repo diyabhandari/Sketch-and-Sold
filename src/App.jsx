@@ -4,6 +4,7 @@ import React, {useState, useEffect, useLayoutEffect} from "react";
 import {supabase} from "./createClient"
 import Header from './components/header.jsx'
 import Footer from './components/footer.jsx'
+import Auth from './auth.jsx'
 import Login from './components/login.jsx'
 import { flushSync } from "react-dom";
 const App = () => {
