@@ -1,19 +1,43 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import './Login.css'; 
+import { supabase } from '../createClient';
 
 const Login = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
 
-  const handleSubmit = (e) => {
+  async function handleSubmit(e){
     e.preventDefault();
-    // Handle login logic here
+    const {data,error} = await supabase
+      .from('users')
+      .select('username,password')
+      .eq('username',username) //match entered username
+      .single();
+    if(error){
+      console.log("supabase connection failed");
+    }
+    if(data===null){
+      console.log("user not found")
+      //user doesnt exist
+      //navigate('/signup')
+    }
+    else{
+      if(data.password === password){
+        console.log("successfull login")
+        //navigate('/userDashboard');
+      }else{
+        alert("incorrect password entered")
+      }
+    }
     console.log('Username:', username);
     console.log('Password:', password);
     // Reset the form
     setUsername('');
     setPassword('');
   };
+
+ 
 
   return (
     <div className="login-container">
@@ -39,7 +63,7 @@ const Login = () => {
             required
           />
         </div>
-        <button type="submit" className="login-button">Login</button>
+        <button type="submit" className="login-button" onClick={()=> handleSubmit}>Login</button>
       </form>
     </div>
   );

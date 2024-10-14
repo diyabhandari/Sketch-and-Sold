@@ -1,10 +1,10 @@
+//equivalent to app.js of tutorial, import the dashboard here
+
 import React, {useState, useEffect, useLayoutEffect} from "react";
 import {supabase} from "./createClient"
 import Header from './components/header.jsx'
 import Footer from './components/footer.jsx'
-
 import Signup from './components/signup.jsx'
-
 import { flushSync } from "react-dom";
 const App = () => {
   const [items,setItems]=useState([])
