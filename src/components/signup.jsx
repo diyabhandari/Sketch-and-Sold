@@ -42,6 +42,7 @@ const Signup = () => {
         user_id: nextUserId,
         username: username, 
         password: password,
+        wallet: 40000,
         role: 'Buyer'
       });
       if (error) {
