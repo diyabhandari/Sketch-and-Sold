@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import './Login.css'; 
+import './styles/Login.css'; 
 import { supabase } from '../createClient';
 
 const Login = () => {
+  const navigate = useNavigate();
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
 
@@ -19,8 +20,8 @@ const Login = () => {
     }
     if(data===null){
       console.log("user not found")
-      //user doesnt exist
-      //navigate('/signup')
+      alert("user not found, please sign up")
+      navigate('/signup')
     }
     else{
       if(data.password === password){

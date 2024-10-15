@@ -1,18 +1,62 @@
 import React, { useState } from 'react';
-import './Signup.css'; 
+import { useNavigate } from 'react-router-dom';
+import './styles/Signup.css'; 
+import { supabase } from '../createClient';
 
 const Signup = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState(''); // New state for confirm password
-  const [userType, setUserType] = useState('artist'); // State for user type
+  const navigate = useNavigate();
+  //const [userType, setUserType] = useState('artist'); // State for user type
+  async function getNextUserId() {
+    //auto increment implemented here, as supabase one is giving errors
+    const { data, error } = await supabase
+      .from('users')
+      .select('user_id')
+      .order('user_id', { ascending: false }) 
+      .limit(1); //we only need the highest value
+    
+    if (error) {
+      console.error('Error fetching max user_id:', error.message);
+      return null; 
+    }
+    const nextUserId = data[0].user_id + 1 ; //data here represents that last row
+    return nextUserId;
+  }
 
-  const handleSubmit = (e) => {
+  async function handleSubmit(e){
     e.preventDefault();
-    // Handle signup logic here
+    const nextUserId = await getNextUserId();
+    if (!nextUserId) {
+      alert('unable to generate user id');
+      return;
+    }
+    if (password !== confirmPassword) {
+      alert('Passwords do not match!');
+      return;
+    }
+    const {data,error} = await supabase
+      .from('users')
+      .insert({ 
+        user_id: nextUserId,
+        username: username, 
+        password: password,
+        role: 'Buyer'
+      });
+      if (error) {
+        console.log('Error saving user:', error.message);
+        alert(error.message);
+      } else {
+        console.log('User created:', data);
+        alert('Sign up successful!');
+        //navigate('/userDashboard'); //check whether you can load specific user dashboard this way
+        //take username, must be unique, load page acc to it
+      }
+
     console.log('Username:', username);
     console.log('Password:', password);
-    console.log('User Type:', userType); // Log user type
+    //console.log('User Type:', userType); // Log user type
     // Reset the form
     setUsername('');
     setPassword('');
@@ -56,7 +100,7 @@ const Signup = () => {
         />
         </div>
 
-        <div className="form-group">
+        {/*<div className="form-group">
           <label htmlFor="user-type">I am a:</label>
           <select
             id="user-type"
@@ -67,8 +111,8 @@ const Signup = () => {
             <option value="artist">Artist</option>
             <option value="buyer">Buyer</option>
           </select>
-        </div>
-        <button type="submit" className="signup-button">Signup</button>
+        </div>*/}
+        <button type="submit" className="signup-button">Sign Up</button>
       </form>
     </div>
   );
