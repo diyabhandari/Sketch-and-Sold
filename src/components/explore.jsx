@@ -1,5 +1,8 @@
+//when user clicks on place bid, get username, item_id and add to userBids table
+
 import React, { useEffect, useState } from 'react';
-import { supabase } from '../createClient'; // Adjust your Supabase client import as needed
+
+import { supabase } from '../createClient';
 import AuctionCard from './auctionCard'; 
 
 const Explore = () => {
@@ -20,7 +23,7 @@ const Explore = () => {
           description,
           base_price,
           auction_id,
-          Auction!Auction_item_id_fkey(currentBidPrice)
+          Auction!Auction_item_id_fkey("currentBidPrice")
         `)
         .not('auction_id', 'is', null); // Fetch only items where auction_id is not null
 
@@ -42,24 +45,21 @@ const Explore = () => {
   }
 
   return (
-    <div>
-      <h1 className="explore-heading">EXPLORE</h1> {/* Heading */}
-      <div className="explore-container">
-        {items.length === 0 ? (
-          <p>No items available for auction.</p>
-        ) : (
-          items.map((item) => (
-            <AuctionCard
-              key={item.item_id}
-              title={item.item_title}
-              image={item.item_image}
-              description={item.description}
-              basePrice={item.base_price}
-              currentBidPrice={item.Auction?.currentBidPrice}  // Ensure this field is accessed correctly
-            />
-          ))
-        )}
-      </div>
+    <div className="explore-container">
+      {items.length === 0 ? (
+        <p>No items available for auction.</p>
+      ) : (
+        items.map((item) => (
+          <AuctionCard
+            key={item.item_id}
+            title={item.item_title}
+            image={item.item_image}
+            description={item.description}
+            basePrice={item.base_price}
+            currentBidPrice={item.Auction?.currentBidPrice}  // Ensure this field is accessed correctly
+          />
+        ))
+      )}
     </div>
   );
 };

@@ -1,11 +1,13 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { UserContext } from '../UserContext';
 import './styles/Login.css'; 
 import { supabase } from '../createClient';
 
 const Login = () => {
   const navigate = useNavigate();
-  const [username, setUsername] = useState('');
+  const { setUsername } = useContext(UserContext); // Access the context
+  const [username, setUsernameInput] = useState('');
   const [password, setPassword] = useState('');
 
   async function handleSubmit(e){
@@ -26,7 +28,8 @@ const Login = () => {
     else{
       if(data.password === password){
         console.log("successfull login")
-        //navigate('/userDashboard');
+        setUsername(username); // Store the username in context
+        navigate('/userDashboard'); // Navigate to user dashboard
       }else{
         alert("incorrect password entered")
       }
@@ -34,7 +37,7 @@ const Login = () => {
     console.log('Username:', username);
     console.log('Password:', password);
     // Reset the form
-    setUsername('');
+    setUsernameInput('');
     setPassword('');
   };
 
@@ -50,7 +53,7 @@ const Login = () => {
             type="text"
             id="username"
             value={username}
-            onChange={(e) => setUsername(e.target.value)}
+            onChange={(e) => setUsernameInput(e.target.value)}
             required
           />
         </div>
