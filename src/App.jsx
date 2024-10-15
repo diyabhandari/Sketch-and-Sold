@@ -12,6 +12,7 @@ import { flushSync } from "react-dom";
 import Explore from "./components/explore.jsx";
 import { UserProvider } from "./UserContext.jsx";
 import UserDashboard from "./pages/userDashboard.jsx";
+import WelcomePage from "./pages/welcomePage.jsx";
 const App = () => {
   /*const [items,setItems]=useState([])
   console.log(items) //what are the values of items
@@ -32,6 +33,7 @@ const App = () => {
     <>
     <UserProvider> 
       <Header />
+      <WelcomePage />
       <Routes>
         <Route path="/login" element={<LoginPage />} />
         <Route path="/signup" element={<SignupPage />} />

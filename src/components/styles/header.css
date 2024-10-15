@@ -9,7 +9,7 @@
     z-index: 1000;
     justify-content: space-between;
     align-items: center;
-    background-color: #48b6e6;
+    background-color: #c648e6;
     padding: 20px;
     color: white;
 }
@@ -60,6 +60,7 @@ body {
 .right-section a:hover,
 .loginLink:hover,
 .signupLink:hover {
+    font-weight: bold;
     text-decoration: underline;
     cursor: pointer;
 }
@@ -68,6 +69,7 @@ body {
     font-size: 1rem;
     color: white;
     margin-top: 10px;
+    font-weight: bold;
 }
 .container{
     display: flex;
