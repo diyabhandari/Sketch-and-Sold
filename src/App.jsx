@@ -9,6 +9,7 @@ import Footer from './components/footer.jsx'
 import LoginPage from './pages/loginPage.jsx'
 import SignupPage from "./pages/signupPage.jsx";
 import { flushSync } from "react-dom";
+import Explore from "./components/explore.jsx";
 const App = () => {
   /*const [items,setItems]=useState([])
   console.log(items) //what are the values of items
@@ -28,7 +29,7 @@ const App = () => {
   return(
     <>
       <Header />
-      <AuctionCard />
+      <Explore />
       <Routes>
         <Route path="/login" element={<LoginPage />} />
         <Route path="/signup" element={<SignupPage />} />

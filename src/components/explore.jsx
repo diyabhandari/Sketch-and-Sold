@@ -1,57 +1,61 @@
 import React, { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom'; // Import useNavigate
-import { supabase } from '../createClient';
-import AuctionCard from './auctionCard';
+import { supabase } from '../createClient'; // Adjust your Supabase client import as needed
+import AuctionCard from './auctionCard'; 
 
-const Explore = ({ auctionItems: propAuctionItems }) => {
-  const [auctionItems, setAuctionItems] = useState(propAuctionItems || []);
-  const navigate = useNavigate(); // Initialize useNavigate for navigation
+const Explore = () => {
+  const [items, setItems] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    if (!propAuctionItems) {
-      const fetchAuctionItems = async () => {
-        // Fetch data from the 'Items' table along with the related 'Auction' data
-        const { data, error } = await supabase
-          .from('Items') // Fetching from Items table
-          .select(`
-            *, Auction (currentBidPrice, auctionEndTime) 
-          `)
-          .is('auction_id', null); // Fetch only where auction_id is null
+    const fetchItems = async () => {
+      setLoading(true);
+      
+      // Fetch items and specify the relationship explicitly
+      const { data, error } = await supabase
+        .from('Items')
+        .select(`
+          item_id,
+          item_title,
+          item_image,
+          description,
+          base_price,
+          auction_id,
+          Auction!Auction_item_id_fkey("currentBidPrice")
+        `)
+        .not('auction_id', 'is', null); // Fetch only items where auction_id is not null
 
-        if (error) {
-          console.log('Error fetching auction items:', error);
-          return;
-        } else {
-          console.log('Fetched auction items:', data);  // Log fetched data
-          setAuctionItems(data);
-        }
+      if (error) {
+        console.error('Error fetching items:', error);
+      } else {
+        console.log('Fetched items:', data); // Log the fetched data to check the result
+        setItems(data);
+      }
 
-        if (!data || data.length === 0) {
-          console.log('No auction items found');
-          navigate('/no-auction-items'); // Navigate to a different page if no items are found
-        }
-      };
+      setLoading(false);
+    };
 
-      fetchAuctionItems();
-    }
-  }, [propAuctionItems, navigate]); // Include navigate in the dependency array
+    fetchItems();
+  }, []);
+
+  if (loading) {
+    return <p>Loading...</p>;
+  }
 
   return (
     <div className="explore-container">
-      {auctionItems.length > 0 ? (
-        auctionItems.map((item) => (
+      {items.length === 0 ? (
+        <p>No items available for auction.</p>
+      ) : (
+        items.map((item) => (
           <AuctionCard
-            key={item.id}
-            type={item.item_type}
+            key={item.item_id}
             title={item.item_title}
             image={item.item_image}
             description={item.description}
-            currentBid={item.Auction?.currentBidPrice} // Accessing the joined Auction data
-            auctionEndTime={item.Auction?.auctionEndTime} // Accessing the joined Auction data
+            basePrice={item.base_price}
+            currentBidPrice={item.Auction?.currentBidPrice}  // Ensure this field is accessed correctly
           />
         ))
-      ) : (
-        <p>No items available for auction.</p>
       )}
     </div>
   );
