@@ -30,14 +30,19 @@ import './AuctionCard.css';
 export default AuctionCard;
 */
 
-const AuctionCard = ({ title, image, description, currentBid, auctionEndTime }) => (
-  <div className="auction-card">
-    <img src={image} alt={title} />
-    <h3>{title}</h3>
-    <p>{description}</p>
-    <p>Current Bid: ${currentBid}</p>
-    <p>Auction ends at: {new Date(auctionEndTime).toLocaleString()}</p>
-  </div>
-);
+const AuctionCard = ({ title, image, description, currentBid, auctionEndTime }) => {
+  console.log('AuctionCard props:', { title, image, description, currentBid, auctionEndTime });
+  
+  return (
+    <div className="auction-card">
+      <h2>{title}</h2>
+      <img src={image} alt={title} />
+      <p>{description}</p>
+      <p>Current Bid: ${currentBid}</p>
+      <p>Auction ends at: {new Date(auctionEndTime).toLocaleString()}</p>
+    </div>
+  );
+};
+
 
 export default AuctionCard;
