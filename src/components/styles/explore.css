@@ -1,0 +1,24 @@
+.explore-heading {
+    position: fixed;
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 2em;
+  }
+  
+  .explore-container {
+    display: flex;
+    flex-direction: row; /* Arrange items in a row */
+    overflow-x: auto; /* Enable horizontal scrolling */
+    gap: 20px; /* Space between cards */
+    padding: 20px;
+  }
+  
+  .explore-container::-webkit-scrollbar {
+    height: 10px; /* Scrollbar height */
+  }
+  
+  .explore-container::-webkit-scrollbar-thumb {
+    background-color: darkgrey;
+    border-radius: 10px;
+  }
+  
