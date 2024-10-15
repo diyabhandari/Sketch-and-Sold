@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import { supabase } from './createClient';
+import { supabase } from '../createClient';
 import './AuctionCard.css';
 
-const AuctionCard = ({ title, startingPrice, description, auctionDuration }) => {
+/*const AuctionCard = ({ title, startingPrice, description, auctionDuration }) => {
   const [currentPrice, setCurrentPrice] = useState(startingPrice);
   const [timeElapsed, setTimeElapsed] = useState(0);
 
@@ -16,17 +16,7 @@ const AuctionCard = ({ title, startingPrice, description, auctionDuration }) => 
     }
   }, []);
 
-  const handleBid = () => {
-    // Logic for bidding (increase the current price)
-    setCurrentPrice((prevPrice) => prevPrice + 10); // Increment by 10 for each bid
-  };
-
-  const formatTimeElapsed = (seconds) => {
-    const minutes = Math.floor(seconds / 60);
-    const hours = Math.floor(minutes / 60);
-    return `${hours}h ${minutes % 60}m ${seconds % 60}s`;
-  };
-
+  
   return (
     <div className="auction-card">
       <h2>{title}</h2>
@@ -38,3 +28,16 @@ const AuctionCard = ({ title, startingPrice, description, auctionDuration }) => 
 };
 
 export default AuctionCard;
+*/
+
+const AuctionCard = ({ title, image, description, currentBid, auctionEndTime }) => (
+  <div className="auction-card">
+    <img src={image} alt={title} />
+    <h3>{title}</h3>
+    <p>{description}</p>
+    <p>Current Bid: ${currentBid}</p>
+    <p>Auction ends at: {new Date(auctionEndTime).toLocaleString()}</p>
+  </div>
+);
+
+export default AuctionCard;

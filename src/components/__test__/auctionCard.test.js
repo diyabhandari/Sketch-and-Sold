@@ -1,4 +1,4 @@
-import React from 'react';
+/*import React from 'react';
 import { render, screen, fireEvent, act } from '@testing-library/react';
 import AuctionCard from './AuctionCard';
 
@@ -43,5 +43,46 @@ describe('AuctionCard', () => {
     
     // Check if the timer shows 0h 0m 0s
     expect(screen.getByText(/Time since bid started: 0h 0m 0s/)).toBeInTheDocument();
+  });
+});
+*/
+import '@testing-library/jest-dom';
+import React from 'react';
+import { render } from '@testing-library/react';
+import AuctionCard from '../auctionCard';
+
+describe('AuctionCard', () => {
+  it('renders without crashing', () => {
+    const { getByText, getByAltText } = render(
+      <AuctionCard
+        title="Antique Vase"
+        image="https://example.com/vase.jpg"
+        description="A beautiful antique vase."
+        currentBid={150}
+        auctionEndTime={Date.now() + 10000}
+      />
+    );
+
+    expect(getByText('Antique Vase')).toBeInTheDocument();
+    expect(getByAltText('Antique Vase')).toBeInTheDocument();
+    expect(getByText('A beautiful antique vase.')).toBeInTheDocument();
+    expect(getByText('Current Bid: $150')).toBeInTheDocument();
+    expect(getByText(/Auction ends at:/)).toBeInTheDocument();
+  });
+
+  it('displays auction end time correctly', () => {
+    const auctionEndTime = Date.now() + 3600000; // 1 hour from now
+    const { getByText } = render(
+      <AuctionCard
+        title="Antique Vase"
+        image="https://example.com/vase.jpg"
+        description="A beautiful antique vase."
+        currentBid={200}
+        auctionEndTime={auctionEndTime}
+      />
+    );
+
+    const auctionEndText = new Date(auctionEndTime).toLocaleString();
+    expect(getByText(`Auction ends at: ${auctionEndText}`)).toBeInTheDocument();
   });
 });
