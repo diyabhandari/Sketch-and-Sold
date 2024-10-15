@@ -1,0 +1,44 @@
+.auction-card {
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 16px;
+    margin: 16px;
+    background-color: #f9f9f9;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease;
+  }
+  
+  .auction-card:hover {
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  }
+  
+  .auction-card h2 {
+    margin: 0 0 8px;
+  }
+  
+  .price {
+    font-size: 1.5em;
+    color: #4caf50;
+    margin: 8px 0;
+  }
+  
+  .timer {
+    font-size: 1em;
+    color: #555;
+    margin: 8px 0;
+  }
+  
+  .bid-button {
+    padding: 10px 16px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .bid-button:hover {
+    background-color: #0056b3;
+  }
+  
