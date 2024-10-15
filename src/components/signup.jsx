@@ -42,6 +42,7 @@ const Signup = () => {
         user_id: nextUserId,
         username: username, 
         password: password,
+        wallet: 40000,
         role: 'Buyer'
       });
       if (error) {
@@ -50,7 +51,7 @@ const Signup = () => {
       } else {
         console.log('User created:', data);
         alert('Sign up successful!');
-        //navigate('/userDashboard'); //check whether you can load specific user dashboard this way
+        navigate('/userDashboard');
         //take username, must be unique, load page acc to it
       }
 

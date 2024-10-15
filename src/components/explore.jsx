@@ -1,5 +1,7 @@
+//when user clicks on place bid, get username, item_id and add to userBids table
+
 import React, { useEffect, useState } from 'react';
-import { supabase } from '../createClient'; // Adjust your Supabase client import as needed
+import { supabase } from '../createClient';
 import AuctionCard from './auctionCard'; 
 
 const Explore = () => {
