@@ -1,0 +1,63 @@
+/* Reset some default styles */
+body, h1, p {
+    margin: 0;
+    padding: 0;
+}
+
+/* Body styling */
+body {
+    font-family: Arial, sans-serif;
+    color: #333; /* Dark gray text */
+    text-align: center; /* Center text */
+    height: 100vh; /* Ensure body takes the full height of the viewport */
+}
+
+.text-shadow {
+    
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Horizontal, vertical, blur, color */
+}
+
+
+/* Welcome container styling */
+.welcome-container {
+    width: 100vw;
+    background-image: url('/image.png'); /* Ensure the path is correct */
+    height: 100vh; /* Full height of the viewport */
+    display: flex; /* Use flexbox for centering */
+    flex-direction: column; /* Column layout */
+    justify-content: center; /* Center vertically */
+    align-items: center; /* Center horizontally */
+    
+    background-size: cover; /* Cover the entire area */
+    background-position: center; /* Center the image */
+    background-repeat: no-repeat; /* Prevent image from repeating */
+}
+
+/* Header styling */
+.header {
+    color: white; /* White text */
+    padding: 20px 0; /* Top and bottom padding */
+}
+
+/* Welcome message styling */
+.welcome-message {
+    margin: 20px 0; /* Margin around the message */
+    font-size: 1.5em; /* Larger text */
+}
+
+/* Button styling */
+.button {
+    display: inline-block; /* Make it inline-block */
+    padding: 10px 20px; /* Padding for button */
+    font-size: 1em; /* Button text size */
+    color: white; /* White text */
+    background-color: #007BFF; /* Bootstrap primary color */
+    border: none; /* No border */
+    border-radius: 5px; /* Rounded corners */
+    text-decoration: none; /* No underline */
+    transition: background-color 0.3s; /* Smooth transition for hover */
+}
+
+.button:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+}
