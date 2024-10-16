@@ -9,7 +9,6 @@ import Footer from './components/footer.jsx'
 import LoginPage from './pages/loginPage.jsx'
 import SignupPage from "./pages/signupPage.jsx";
 import { flushSync } from "react-dom";
-import Explore from "./components/explore.jsx";
 import { UserProvider } from "./UserContext.jsx";
 import UserDashboard from "./pages/userDashboard.jsx";
 const App = () => {
