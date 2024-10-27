@@ -4,7 +4,6 @@ import React, {useState, useEffect, useLayoutEffect} from "react";
 import { Routes, Route, useNavigate } from 'react-router-dom';
 import {supabase} from "./createClient"
 import Header from './components/header.jsx'
-import AuctionCard from './components/auctionCard.jsx'
 import Footer from './components/footer.jsx'
 import LoginPage from './pages/loginPage.jsx'
 import SignupPage from "./pages/signupPage.jsx";
@@ -42,6 +41,7 @@ const App = () => {
   return(
     <>
     <UserProvider> 
+      <Explore />
       <Header />
       <Routes>
         <Route path="/welcomePage" element={<WelcomePage />} />
