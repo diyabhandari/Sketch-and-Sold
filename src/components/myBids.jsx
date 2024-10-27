@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { supabase } from '../createClient';
 import AuctionCard from './auctionCard'; 
-
+import './styles/myBids.css'
 const MyBids = ({ username }) => {
   const [bids, setBids] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -46,6 +46,8 @@ const MyBids = ({ username }) => {
 
   return (
     <div className="my-bids-container">
+      <h1 className = "heading">My Bids</h1>
+      <div>
       {bids.length === 0 ? (
         <p>You have no active bids.</p>
       ) : (
@@ -60,6 +62,7 @@ const MyBids = ({ username }) => {
           />
         ))
       )}
+      </div> 
     </div>
   );
 };

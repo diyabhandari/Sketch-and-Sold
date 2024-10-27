@@ -1,8 +1,13 @@
 import React from 'react';
 import backgroundImage from '/image.png';
 import '../components/styles/welcome.css'; // Import your CSS file here
+import { useNavigate } from 'react-router-dom';
 
 const WelcomePage = () => {
+    const navigate = useNavigate();
+    const clickStart = () => {
+        navigate('/login');
+    }
     return (
         <div className="welcome-container">
             
@@ -11,9 +16,9 @@ const WelcomePage = () => {
             <div className="welcome-message">
                 <p>Your one-stop destination for bidding on exclusive items!</p>
             </div>
-            <a href="/auctions" className="button">
+            <button className="button" onClick={clickStart}>
                 Start Bidding
-            </a>
+            </button>
         </div>
     );
 };
