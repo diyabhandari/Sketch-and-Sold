@@ -1,15 +1,12 @@
 .explore-page {
   padding: 20px;
+  margin-top: 1000px;
 }
 
 .explore-heading {
   text-align: center;
   margin-bottom: 20px;
   font-size: 2em;
-}
-.explore-page{
-  margin-top: 100px;
-  margin-bottom: 100px;
 }
 
 .explore-slider-container {
